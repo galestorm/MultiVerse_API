@@ -12,6 +12,7 @@ class PoemsController < ApplicationController
   end
 
   def show
-
+    poem = Poem.find(params[:id].to_i)
+    render status: :ok, json: poem
   end
 end
