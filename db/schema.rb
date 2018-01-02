@@ -10,16 +10,39 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180102030333) do
+ActiveRecord::Schema.define(version: 20180102214942) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "experiences", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "poem_id"
+    t.index ["poem_id"], name: "index_experiences_on_poem_id"
+    t.index ["user_id"], name: "index_experiences_on_user_id"
+  end
 
   create_table "poems", force: :cascade do |t|
     t.string "title"
     t.string "author"
     t.text "lines"
     t.text "source"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "saved_poems", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.bigint "user_id"
+    t.bigint "poem_id"
+    t.index ["poem_id"], name: "index_saved_poems_on_poem_id"
+    t.index ["user_id"], name: "index_saved_poems_on_user_id"
+  end
+
+  create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
