@@ -17,8 +17,14 @@ namespace :poems do
         poem_page = Nokogiri::HTML(open(poem_url))
         title = poem_page.css('h1#page-title').text
         author = poem_page.css('.view-display-id-poem_author_dob_dod a span').text
-        lines = poem_page.css('.field-type-text-with-summary pre').inner_html
-        source = poem_page.css('.poem-credit p').inner_html
+        if poem_page.css('.field-type-text-with-summary pre').inner_html != ""
+          lines = poem_page.css('.field-type-text-with-summary pre').inner_html
+        elsif poem_page.css('.field-type-text-with-summary .field-item').inner_html != ""
+          lines = poem_page.css('.field-type-text-with-summary .field-item').inner_html
+        else
+          next
+        end
+        source = poem_page.css('#poem-content .poem-credit p').inner_html
         poem = Poem.new(
           title: title,
           author: author,
