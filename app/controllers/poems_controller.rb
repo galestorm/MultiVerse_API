@@ -1,13 +1,13 @@
 class PoemsController < ApplicationController
 
   def index
-    #accept search terms as a string. Break into array in model method
+    #method only works for a 1-word query
     if params[:query]
-      #search the lines and the title with this query
-      poems = search_poems(params[:query])
+      poems = Poem.search_poems(params[:query])
       render status: :ok, json: poems
     else
-      # unclear
+      #generate random poems if no query given
+      #TODO
     end
   end
 
