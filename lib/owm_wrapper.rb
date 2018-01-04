@@ -10,8 +10,8 @@ class OpenWeatherWrapper
     #TODO add some logic in here. See Edamam OpenWeatherWrapper
 
     data = JSON.parse(result.to_s)
-    description = data["weather"][0]["main"]
-    return description
+    #description = data["weather"][0]["main"]
+    return data
   end
 
 end
