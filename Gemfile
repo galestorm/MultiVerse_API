@@ -15,6 +15,7 @@ gem 'puma', '~> 3.7'
 
 gem 'httparty'
 
+
 gem 'omniauth'
 gem 'omniauth-facebook', '1.4.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder

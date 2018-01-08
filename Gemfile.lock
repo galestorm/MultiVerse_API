@@ -72,6 +72,7 @@ GEM
     globalid (0.4.1)
       activesupport (>= 4.2.0)
     hashie (3.5.6)
+    htmlentities (4.3.4)
     httparty (0.15.6)
       multi_xml (>= 0.5.2)
     httpauth (0.2.1)
@@ -195,6 +196,7 @@ DEPENDENCIES
   byebug
   dotenv-rails
   foundation-rails (= 6.4.1.2)
+  htmlentities
   httparty
   jquery-turbolinks
   listen (>= 3.0.5, < 3.2)
