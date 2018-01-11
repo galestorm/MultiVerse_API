@@ -29,12 +29,16 @@ namespace :poems do
         # format lines
         remove_em_tags = lines.gsub(/<\/*em>/, '')
         remove_i_tags = remove_em_tags.gsub(/<\/*i>/, '')
-        replace_br_tags = remove_i_tags.gsub(/<br>/, "\n")
+        remove_b_tags = remove_i_tags.gsub(/<\/*b>/, '')
+        replace_br_tags = remove_b_tags.gsub(/<br>/, "\n")
         remove_p_tags = replace_br_tags.gsub(/<p>/, '')
         replace_end_p_tags = remove_p_tags.gsub(/<\/p>/, "\n")
         remove_div_tags = replace_end_p_tags.gsub(/<div>/, '')
         replace_end_div_tags = remove_div_tags.gsub(/<\/div>/, "\n")
-        formatted_lines = replace_end_div_tags.gsub(/<\/pre>/, '')
+        remove_blkq_tags = replace_end_div_tags.gsub(/<blockquote>/, '')
+        replace_end_blkq_tags = remove_blkq_tags.gsub(/<\/blockquote>/, "\n")
+        remove_pre_tags = replace_end_blkq_tags.gsub(/<\/*pre>/, '')
+        formatted_lines = remove_pre_tags
 
 
         #format source

@@ -5,4 +5,6 @@ Rails.application.routes.draw do
   get '/poems/:id', to: 'poems#show'
 
   get '/weather', to: 'wrappers#weather'
+
+  post '/users', to: 'users#login'
 end
