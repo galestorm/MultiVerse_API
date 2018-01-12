@@ -7,4 +7,6 @@ Rails.application.routes.draw do
   get '/weather', to: 'wrappers#weather'
 
   post '/users', to: 'users#login'
+
+  post '/saved_poems', to: 'saved_poems#create'
 end
