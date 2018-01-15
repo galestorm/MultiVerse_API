@@ -1,6 +1,14 @@
 class SavedPoemsController < ApplicationController
 
   def index
+    user = User.find_by uid: params[:uid].to_i
+    user_id = user.id
+    saved_poems = SavedPoem.where("user_id = ?", user_id)
+    poems = []
+    saved_poems.each do |saved_poem|
+      poems << Poem.find(saved_poem.poem_id)
+    end
+    render status: :ok, json: poems
   end
 
   def create

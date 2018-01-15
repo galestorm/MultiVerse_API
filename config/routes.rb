@@ -9,4 +9,6 @@ Rails.application.routes.draw do
   post '/users', to: 'users#login'
 
   post '/saved_poems', to: 'saved_poems#create'
+
+  get '/saved_poems', to: 'saved_poems#index'
 end
