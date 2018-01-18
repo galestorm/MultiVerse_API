@@ -38,15 +38,26 @@ namespace :poems do
         remove_blkq_tags = replace_end_div_tags.gsub(/<blockquote>/, '')
         replace_end_blkq_tags = remove_blkq_tags.gsub(/<\/blockquote>/, "\n")
         remove_pre_tags = replace_end_blkq_tags.gsub(/<\/*pre>/, '')
-        formatted_lines = remove_pre_tags
+        remove_span_tags = remove_pre_tags.gsub(/<span .*>/, '')
+        remove_end_span_tags = remove_span_tags.gsub(/<\/span>/, '')
+        formatted_lines = remove_end_span_tags
 
 
         #format source
         s_remove_em_tags = source.gsub(/<em>/, '"')
         s_replace_em_end_tags = s_remove_em_tags.gsub(/\s<\/em>/, '" ')
-        s_replace_br_tags = s_replace_em_end_tags.gsub(/<br>/, "\n")
+        s_replace_em_end_tags2 = s_replace_em_end_tags.gsub(/<\/em>/, '"')
+        s_remove_i_tags = s_replace_em_end_tags2.gsub(/<i>/, '"')
+        s_replace_i_end_tags = s_remove_i_tags.gsub(/\s<\/i>/, '" ')
+        s_replace_i_end_tags2 = s_replace_i_end_tags.gsub(/<\/i>/, '"')
+        s_replace_br_tags = s_replace_i_end_tags2.gsub(/<br>/, "\n")
         s_replace_p_tags = s_replace_br_tags.gsub(/<\/*p>/, "\n")
-        formatted_source = s_replace_p_tags.gsub(/<\/pre>/, '')
+        s_remove_pre_tags = s_replace_p_tags.gsub(/<\/pre>/, '')
+        s_remove_b_tags = s_remove_pre_tags.gsub(/<\/*b>/, '')
+        s_remove_span_tags = s_remove_b_tags.gsub(/<span .*>/, '')
+        s_remove_end_span_tags = s_remove_span_tags.gsub(/<\/span>/, '')
+        formatted_source = s_remove_end_span_tags
+
 
         poem = Poem.new(
           title: title,
