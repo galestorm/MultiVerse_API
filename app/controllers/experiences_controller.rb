@@ -11,6 +11,7 @@ class ExperiencesController < ApplicationController
   def create
     user = User.find_by uid: params[:uid].to_i
     poem = Poem.find(params[:poem_id].to_i)
+    photo_id = params[:photoId].to_i
     user_id = user.id
     poem_id = poem.id
 
@@ -20,7 +21,7 @@ class ExperiencesController < ApplicationController
     new_experience = Experience.new
     new_experience.user_id = user_id
     new_experience.poem_id = poem_id
-    new_experience.photoId = params[:photoId].to_i
+    new_experience.photo_id = photo_id
     new_experience.title = title
     new_experience.notes = notes
 
