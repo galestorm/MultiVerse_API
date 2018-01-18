@@ -11,12 +11,12 @@ class ExperiencesController < ApplicationController
   def create
     user = User.find_by uid: params[:uid].to_i
     poem = Poem.find(params[:poem_id].to_i)
-    photo_id = params[:photoId].to_i
+
     user_id = user.id
     poem_id = poem.id
-
-    title = params[:title].to_i
-    notes = params[:notes].to_i
+    photo_id = params[:photoId]
+    title = params[:title]
+    notes = params[:notes]
 
     new_experience = Experience.new
     new_experience.user_id = user_id
