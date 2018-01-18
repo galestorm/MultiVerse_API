@@ -1,5 +1,9 @@
 class ExperiencesController < ApplicationController
   def index
+    user = User.find_by uid: params[:uid].to_i
+    user_id = user.id
+    experiences = Experience.where("user_id = ?", user_id)
+    render status: :ok, json: experiences
   end
 
   def show

@@ -13,4 +13,6 @@ Rails.application.routes.draw do
   get '/saved_poems', to: 'saved_poems#index'
 
   post '/experiences', to: 'experiences#create'
+
+  get '/experiences', to: 'experiences#index'
 end
