@@ -13,14 +13,14 @@ class ExperiencesController < ApplicationController
     poem = Poem.find(params[:poem_id].to_i)
     user_id = user.id
     poem_id = poem.id
-    photoId = params[:photoId].to_i
+
     title = params[:title].to_i
     notes = params[:notes].to_i
 
     new_experience = Experience.new
     new_experience.user_id = user_id
     new_experience.poem_id = poem_id
-    new_experience.photoId = photoId
+    new_experience.photoId = params[:photoId].to_i
     new_experience.title = title
     new_experience.notes = notes
 
