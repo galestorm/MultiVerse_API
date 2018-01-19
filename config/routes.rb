@@ -12,7 +12,14 @@ Rails.application.routes.draw do
 
   get '/saved_poems', to: 'saved_poems#index'
 
+  delete '/saved_poems', to: 'saved_poems#destroy'
+
   post '/experiences', to: 'experiences#create'
 
   get '/experiences', to: 'experiences#index'
+
+  get '/experience', to: 'experiences#show'
+
+  delete '/experiences', to: 'experiences#destroy'
+
 end

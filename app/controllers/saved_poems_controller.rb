@@ -31,6 +31,17 @@ class SavedPoemsController < ApplicationController
     end
   end
 
-  def delete
+  def destroy
+    user = User.find_by uid: params[:uid].to_i
+    poem =  Poem.find(params[:poem_id].to_i)
+    user_id = user.id
+    poem_id = poem.id
+    saved_poem = SavedPoem.where("user_id = ? AND poem_id = ?", user_id, poem_id)
+    if saved_poem[0]
+      saved_poem[0].destroy
+      render status: :ok
+    else
+      render status: :bad_request
+    end
   end
 end
