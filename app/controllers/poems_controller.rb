@@ -4,6 +4,7 @@ class PoemsController < ApplicationController
     #method only works for a 1-word query
     if params[:query]
       poems = Poem.search_poems(params[:query])
+      poems.shuffle!
       render status: :ok, json: poems
     else
       #generate random poems if no query given

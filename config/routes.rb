@@ -22,4 +22,6 @@ Rails.application.routes.draw do
 
   delete '/experiences', to: 'experiences#destroy'
 
+  patch '/experiences', to: 'experiences#update'
+
 end

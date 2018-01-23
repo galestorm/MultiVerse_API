@@ -50,6 +50,7 @@ class ExperiencesController < ApplicationController
   end
 
   def update
+    experience = Experience.find(params[:id].to_i)
   end
 
   def destroy
