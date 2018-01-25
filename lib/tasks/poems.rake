@@ -40,7 +40,8 @@ namespace :poems do
         remove_pre_tags = replace_end_blkq_tags.gsub(/<\/*pre>/, '')
         remove_span_tags = remove_pre_tags.gsub(/<span .*>/, '')
         remove_end_span_tags = remove_span_tags.gsub(/<\/span>/, '')
-        formatted_lines = remove_end_span_tags
+        remove_strong_tags = remove_end_span_tags.gsub(/<\/*strong>/, '')
+        formatted_lines = remove_strong_tags
 
 
         #format source
@@ -56,7 +57,10 @@ namespace :poems do
         s_remove_b_tags = s_remove_pre_tags.gsub(/<\/*b>/, '')
         s_remove_span_tags = s_remove_b_tags.gsub(/<span .*>/, '')
         s_remove_end_span_tags = s_remove_span_tags.gsub(/<\/span>/, '')
-        formatted_source = s_remove_end_span_tags
+        s_remove_strong_tags = s_remove_end_span_tags.gsub(/<\/*strong>/, '')
+        s_remove_a_tags = s_remove_strong_tags.gsub(/<a .*>/, '')
+        s_remove_a_end_tags = s_remove_a_tags.gsub(/<\/a>/, '')
+        formatted_source = s_remove_a_end_tags
 
 
         poem = Poem.new(
